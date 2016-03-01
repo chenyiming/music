@@ -30,7 +30,7 @@ for i in range(SAMPLE_LEN):
     F1=0.25  # 调制频率
     A1=MAX_AMPLITUDE# * cos(t *F1* 2 * pi)  # 调制振幅
     sample = A1 *sin(t *F0* 2 * pi) # 就根据sin wave的方程得到当下的amplitude啦，这里生成频率为256的音高哟，可以随便改。
-    sample2 = A1 *sin(t *F02* 2 * pi) # 就根据sin wave的方程得到当下的amplitude啦，这里生成频率为256的音高哟，可以随便改。
+    #sample2 = A1 *sin(t *F02* 2 * pi) # 就根据sin wave的方程得到当下的amplitude啦，这里生成频率为256的音高哟，可以随便改。
     sample2 = A1 *( sin(t *F0* 2 * pi)*1 + sin(t *F02* 2 * pi)*1)/2 # 就根据sin wave的方程得到当下的amplitude啦，这里生成频率为256的音高哟，可以随便改。
     #print(sample)
     #print i, t,  sample     # show some generated values. comment out for speed.

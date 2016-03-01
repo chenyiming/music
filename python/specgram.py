@@ -7,7 +7,7 @@ __author__ = 'chenke'
 import wave
 import struct
 from scipy import *
-from pylab import *
+#from pylab import *
 
 #读取wav文件，我这儿读了个自己用python写的音阶的wav
 filename = 'd:/output.wav'
@@ -18,6 +18,8 @@ nchannels = wavefile.getnchannels()
 sample_width = wavefile.getsampwidth()
 framerate = wavefile.getframerate()
 numframes = wavefile.getnframes()
+
+print numframes/framerate
 
 #建一个y的数列，用来保存后面读的每个frame的amplitude。
 y = zeros(numframes)
@@ -34,5 +36,5 @@ for i in range(numframes):
 
 #framerate就是44100，文件初读取的值。然后本程序最关键的一步！specgram！实在太简单了。。。
 Fs = framerate
-specgram(y, NFFT=1024, Fs=Fs, noverlap=900)
-show()
+#specgram(y, NFFT=1024, Fs=Fs, noverlap=900)
+#show()
