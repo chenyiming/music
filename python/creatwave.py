@@ -25,18 +25,18 @@ for i in range(SAMPLE_LEN):
         temp=i*4/SAMPLE_RATE;
     beishu= 1.05946 **(i*4/SAMPLE_RATE)
 
-    F0= 441  *beishu  # 载波频率
-    F02=2*441  *beishu  # 载波频率
+    F0= 441 # *beishu  # 载波频率
+    F02=2*441 # *beishu  # 载波频率
     F1=0.25  # 调制频率
     A1=MAX_AMPLITUDE# * cos(t *F1* 2 * pi)  # 调制振幅
     sample = A1 *sin(t *F0* 2 * pi) # 就根据sin wave的方程得到当下的amplitude啦，这里生成频率为256的音高哟，可以随便改。
     sample2 = A1 *sin(t *F02* 2 * pi) # 就根据sin wave的方程得到当下的amplitude啦，这里生成频率为256的音高哟，可以随便改。
-    #sample2 = A1 *( sin(t *F0* 2 * pi)*1 + sin(t *F02* 2 * pi)*0)/2 # 就根据sin wave的方程得到当下的amplitude啦，这里生成频率为256的音高哟，可以随便改。
+    sample2 = A1 *( sin(t *F0* 2 * pi)*1 + sin(t *F02* 2 * pi)*1)/2 # 就根据sin wave的方程得到当下的amplitude啦，这里生成频率为256的音高哟，可以随便改。
     #print(sample)
     #print i, t,  sample     # show some generated values. comment out for speed.
     packed_sample = struct.pack('h', sample)  # 转换成16进制的string
     packed_sample2 = struct.pack('h', sample2)  # 转换成16进制的string
-    samples.append(packed_sample)  # append到samples，作为channel 1
+    samples.append(packed_sample2)  # append到samples，作为channel 1
     samples.append(packed_sample2)  # append一个一样的作为channel 2，要是append另一个频率的 packed_sample_2,就可以有和声效果啦
 sample_str = ''.join(samples)   # 把samples里所有的值都convert到一个string上
 wavefile.writeframes(sample_str)        # 终于要写waveframe啦！
