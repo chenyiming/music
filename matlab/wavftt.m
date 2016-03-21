@@ -1,8 +1,8 @@
 fs=44100;                  %语音信号采样频率为8000  44100
 
-x=wavread('D:\\03.wav',[fs*1 fs*2]);
+x=wavread('D:\\01.wav');%,[fs*1 fs*2]);
 x1=x(:,1); % 抽取第 1 声道
-x2=x(:,2); % 抽取第 2 声道
+%x2=x(:,2); % 抽取第 2 声道
 
 t=(0:length(x1)-1)/fs;%运算结果的时间序列
 figure(1)
@@ -43,7 +43,7 @@ imagesc(t1,f1(1:50), abs(b(1:50,:))),
 axis xy, 
 colormap(jet); % 画时频图
 
-bx= (abs(b(:,1:2))) ;
+bx= (abs(b(:,1))) ; % 画某一个抽样窗的频频图
 bx(:,2)=abs(b(:,10));
 figure(4);
-plot(f1(1:80),bx(1:80,1:2),'DisplayName','f1 vs. bx','XDataSource','f1','YDataSource','bx');
+plot(f1(1:80),bx(1:80,1),'DisplayName','f1 vs. bx','XDataSource','f1','YDataSource','bx');
