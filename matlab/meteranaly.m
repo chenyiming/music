@@ -15,14 +15,14 @@ figure,imshow(BW);      title('BWMORPH')
 [M,N]=size(BW);
 [H,T,R] = hough(BW);
 figure;
-imshow(H,[],'XData',T,'YData',R,'InitialMagnification','fit');
+imshow(H,[],'XData',T,'YData',R,'InitialMagnification','fit'); title('»ô·òÂü')
        xlabel('\theta'), ylabel('\rho');
        axis on, axis normal, hold on;
        P  = houghpeaks(H,1,'threshold',ceil(0.3*max(H(:))));
        x = T(P(:,2)); 
        y = R(P(:,1));
        plot(x,y,'s','color','white');
-%%%%%%%%%%%%%%%%%%%% Find lines and plot them%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%% Ñ°ÕÒÖ¸Õë%%%%%%%%%%%%%%
        lines = houghlines(BW,T,R,P,'FillGap',5,'MinLength',7);
        hold on;
         figure, imshow(RGB),title('½á¹û'); hold on
@@ -41,7 +41,7 @@ imshow(H,[],'XData',T,'YData',R,'InitialMagnification','fit');
        end
 %%%%%%%%%%%%% highlight the longest line segment%%%%%%%%%%%%%%
        plot(xy_long(:,1),xy_long(:,2),'LineWidth',2,'Color','cyan');
-       k=(xy(2,2)-xy(1,2))/(xy(2,1)-xy(1,1));
+       k=(xy(2,2)-xy(1,2))/(xy(2,1)-xy(1,1));%  (y2-y1)/(x2-x1)
      theta=pi/2+atan(k);
        if((xy(1,1)+xy(2,1))/2<=N/2)
                q=(theta+pi)*180/3.14;        
